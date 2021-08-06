@@ -8,15 +8,15 @@ import axios from "axios";
 
 axios.get('https://api.github.com/users/luisbryandr')
   .then(res => {
-    console.log(res)
+    console.log(res)//logs the data I get from this to the console so I can 1.verify I got something back and 2 I can see what I get back
   }).catch(err => {
-    console.error(err)
+    console.error(err)//good dev practice to know any errors I get
   });
 /*
   STEP 2: Inspect and study the data coming back, this is YOUR
     github info! You will need to understand the structure of this
     data in order to use it to build your component function
-
+//done 
     Skip to STEP 3.
 */
 
@@ -57,7 +57,20 @@ const followersArray = [];
       </div>
     </div>
 */
+ function cardCreator(object){
+   const conDiv = document.createElement('div')
+   const image = document.createElement('img')
+   const cardDiv = document.createElement('div')
+   const heading = document.createElement('h3')
+   const username = document.createElement('p')
+   const location = document.createElement('p')
+   const profile = document.createElement('p')
+   const link = document.createElement('a')
+   const followers = document.createElement('p')
+   const following = document.createElement('p')
+   const bio = document.createElement('p')
 
+ }
 /*
   List of LS Instructors Github username's:
     tetondan
