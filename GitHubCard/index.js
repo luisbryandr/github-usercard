@@ -58,6 +58,7 @@ const followersArray = [];
     </div>
 */
  function cardCreator(object){
+   //creating the elements I need for my card structure
    const conDiv = document.createElement('div')
    const image = document.createElement('img')
    const cardDiv = document.createElement('div')
@@ -69,7 +70,33 @@ const followersArray = [];
    const followers = document.createElement('p')
    const following = document.createElement('p')
    const bio = document.createElement('p')
-
+   //setting class names, attributes and text
+   conDiv.classList.add('card')
+   image.src = "idk yet how to get there will ask a friend"
+   cardDiv.classList.add('card-info')
+   heading.classList.add('name')
+   heading.textContent = {username}//not sure how to add it here
+   username.classList.add('username')
+   username,textContent = {usersusername}
+   location.textContent = {userslocation}
+   profile.textContent = 'Profile'
+   link.setAttribute(href, {addresstousersgithub age})
+   link.textContent = {addresstosersgithubpage}
+   followers.textContent = `Followers: ${usersfollowercount}`
+   following.textContent = `Following: ${usersfollowingcount}` 
+   bio.textContent = `Bio: ${usersbio}`
+   //structuring the elements in the desired markup
+   document.body.appendChild(conDiv)
+   conDiv.appendChild(image)
+   conDiv.appendChild(cardDiv)
+   cardDiv.appendChild(heading)
+   cardDiv.appendChild(username)
+   cardDiv.appendChild(location)
+   cardDiv.appendChild(profile)
+   cardDiv.appendChild(link)
+   cardDiv.appendChild(followers)
+   cardDiv.appendChild(following)
+   cardDiv.appendChild(bio)
  }
 /*
   List of LS Instructors Github username's:
