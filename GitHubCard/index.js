@@ -1,3 +1,5 @@
+import axios from "axios";
+
 /*
   STEP 1: using axios, send a GET request to the following URL
     (replacing the placeholder with your Github name):
@@ -28,7 +30,78 @@
     user, and adding that card to the DOM.
 */
 
-const followersArray = [];
+const followersArray = [
+  'luisbryandr',
+  'sangonzal',
+  'NelsonMaldonado',
+  'ashleyannlaz',
+  'dustinmyers',
+  'bigknell'
+];
+
+for(let i = 0; i < followersArray.length; i++){
+  getGithubCards(followersArray[i])
+}
+
+function getGithubCards(username) {
+  axios.get(`https://api.github.com/users/${username}`)
+    .then(res => {
+      document.querySelector('.cards').appendChild(cardCreator(res.data))
+    })
+      .catch(err => console.log(err))
+}
+
+
+const cardCreator = (user) => {
+  const cardWrapper = document.createElement('div');
+  const cardImage = document.createElement('img');
+  const cardInfoWrapper = document.createElement('div');
+  const usersName = document.createElement('h3');
+  const username = document.createElement('p');
+  const location = document.createElement('p');
+  const profile = document.createElement('p');
+  const userLink = document.createElement('a');
+  const followers = document.createElement('p');
+  const following = document.createElement('p');
+  const bio = document.createElement('p');
+
+  cardWrapper.appendChild(cardImage);
+  cardWrapper.appendChild(cardInfoWrapper);
+
+  cardInfoWrapper.appendChild(usersName);
+  cardInfoWrapper.appendChild(username);
+  cardInfoWrapper.appendChild(location);
+  cardInfoWrapper.appendChild(profile);
+  cardInfoWrapper.appendChild(followers);
+  cardInfoWrapper.appendChild(following);
+  cardInfoWrapper.appendChild(bio);
+
+  cardWrapper.classList.add('card');
+  cardInfoWrapper.classList.add('card-info');
+
+  cardImage.setAttribute('src', user.avatar_url);
+  
+  usersName.classList.add('name');
+  usersName.textContent = user.name;
+
+  username.classList.add('username');
+  username.textContent = user.login;
+
+  location.textContent = `Location : ${user.location}`;
+
+  userLink.setAttribute('href', user.html_url);
+  userLink.textContent = user.html_url;
+
+  profile.textContent = 'Profile:'
+  profile.appendChild(userLink);
+
+  followers.textContent = `Followers: ${user.followers}`;
+  following.textContent = `Following: ${user.following}`;
+  bio.textContent = `Bio: ${user.bio}`;
+  
+  return cardWrapper
+}
+
 
 /*
   STEP 3: Create a function that accepts a single object as its only argument.
