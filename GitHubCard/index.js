@@ -1,14 +1,22 @@
+import axios from "axios";
+
 /*
   STEP 1: using axios, send a GET request to the following URL
     (replacing the placeholder with your Github name):
     https://api.github.com/users/<your name>
 */
 
+axios.get('https://api.github.com/users/luisbryandr')
+  .then(res => {
+    console.log(res)//logs the data I get from this to the console so I can 1.verify I got something back and 2 I can see what I get back
+  }).catch(err => {
+    console.error(err)//good dev practice to know any errors I get
+  });
 /*
   STEP 2: Inspect and study the data coming back, this is YOUR
     github info! You will need to understand the structure of this
     data in order to use it to build your component function
-
+//done 
     Skip to STEP 3.
 */
 
@@ -49,7 +57,47 @@ const followersArray = [];
       </div>
     </div>
 */
-
+ function cardCreator(object){
+   //creating the elements I need for my card structure
+   const conDiv = document.createElement('div')
+   const image = document.createElement('img')
+   const cardDiv = document.createElement('div')
+   const heading = document.createElement('h3')
+   const username = document.createElement('p')
+   const location = document.createElement('p')
+   const profile = document.createElement('p')
+   const link = document.createElement('a')
+   const followers = document.createElement('p')
+   const following = document.createElement('p')
+   const bio = document.createElement('p')
+   //setting class names, attributes and text
+   conDiv.classList.add('card')
+   image.src = "idk yet how to get there will ask a friend"
+   cardDiv.classList.add('card-info')
+   heading.classList.add('name')
+   heading.textContent = {username}//not sure how to add it here
+   username.classList.add('username')
+   username,textContent = {usersusername}
+   location.textContent = {userslocation}
+   profile.textContent = 'Profile'
+   link.setAttribute(href, {addresstousersgithub age})
+   link.textContent = {addresstosersgithubpage}
+   followers.textContent = `Followers: ${usersfollowercount}`
+   following.textContent = `Following: ${usersfollowingcount}` 
+   bio.textContent = `Bio: ${usersbio}`
+   //structuring the elements in the desired markup
+   document.body.appendChild(conDiv)
+   conDiv.appendChild(image)
+   conDiv.appendChild(cardDiv)
+   cardDiv.appendChild(heading)
+   cardDiv.appendChild(username)
+   cardDiv.appendChild(location)
+   cardDiv.appendChild(profile)
+   cardDiv.appendChild(link)
+   cardDiv.appendChild(followers)
+   cardDiv.appendChild(following)
+   cardDiv.appendChild(bio)
+ }
 /*
   List of LS Instructors Github username's:
     tetondan
